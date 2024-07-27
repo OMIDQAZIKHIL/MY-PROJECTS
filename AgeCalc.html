@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            background-color: lightgray;
+        }
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0069d9;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Age Calculator</h2>
+    <label for="birthdate">Enter your birthdate:</label>
+    <input type="date" id="birthdate" />
+    <button onclick="calculateAge()">Calculate Age</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    // JavaScript
+    function calculateAge() {
+        const birthdateInput = document.getElementById('birthdate');
+        const birthdate = new Date(birthdateInput.value);
+        const today = new Date();
+        const age = Math.floor((today - birthdate) / (365.25 * 24 * 60 * 60 * 1000));
+        const resultDiv = document.getElementById('result');
+        
+        if (isNaN(age)) {
+            resultDiv.innerText = 'Please enter a valid date.';
+        } else {
+            resultDiv.innerText = `You are ${age} years old.`;
+        }
+    }
+</script>
+
+</body>
+</html>
